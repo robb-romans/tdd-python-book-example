@@ -14,20 +14,19 @@
       <nav class="navbar">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">Superlists</a>
-
-          <form method="POST" action="{% url 'send_login_email' %}">
-            <div class="input-group">
-              <label class="navbar-text me-2" for="id_email_input">
-                Enter your email to log in
-              </label>
-              <input
-                id="id_email_input"
-                name="email"
-                class="form-control"
-                placeholder="your@email.com"
-              />
-            </div>
-          </form>
+          {% if user.email %}
+            <!-- TODO put in a ul -->
+            <span class="navbar-text">Logged in as {{ user.email }}</span>
+            <a href="#">Log out</a>
+          {% else %}
+            <form class="navbar-form navbar-right"
+                  method="POST"
+                  action="{% url 'send_login_email' %}">
+              <span>Enter email to log in:</span>
+              <input class="form-control" name="email" type="text" />
+              {% csrf_token %}
+            </form>
+          {% endif %}
         </div>
       </nav>
 
