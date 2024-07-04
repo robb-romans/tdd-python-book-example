@@ -17,7 +17,8 @@
           {% if user.email %}
             <!-- TODO put in a ul -->
             <span class="navbar-text">Logged in as {{ user.email }}</span>
-            <a href="#">Log out</a>
+            <a href="{% url 'logout' %}">Log out</a>
+            </ul>
           {% else %}
             <form class="navbar-form navbar-right"
                   method="POST"
