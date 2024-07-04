@@ -8,9 +8,7 @@ def send_login_email(request):
     send_mail(
         "Your login link for Superlists", "body text tbc", "noreply@superlists", [email]
     )
-    messages.add_message(
-        request,
-        messages.SUCCESS,
-        "Check your email, we've sent you a link you can use to log in.",
+    messages.success(
+        request, "Check your email, we've sent you a link you can use to log in."
     )
     return redirect("/")
